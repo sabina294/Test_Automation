@@ -55,6 +55,5 @@ try:
 except Exception as e:
     print("Element 'police' not found with Explicit wait.")
     time.sleep(5)
-
-
+    driver.quit()
 

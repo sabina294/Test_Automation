@@ -20,3 +20,4 @@ try:
 
 except Exception as e:
     print("Element 'user1_profile' not found with Explicit wait.")
+    driver.quit()

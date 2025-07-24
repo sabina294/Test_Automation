@@ -74,4 +74,5 @@ try:
 except Exception as e:
     print("Element 'Continue Button' not found with Explicit wait.")
     time.sleep(20)
+    driver.quit()
 

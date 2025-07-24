@@ -57,3 +57,4 @@ try:
 
 except Exception as e:
     print("Element 'Register User' not found with Explicit wait.")
+    driver.quit()
