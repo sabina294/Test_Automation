@@ -1,52 +1,52 @@
 from selenium import webdriver
-from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.chrome.options import Options
 import logging
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-# setup logging
+# === Setup logging ===
 logging.basicConfig(
-    filename="15_browser_options.log",
-    level= logging.INFO,
+    filename="16_browser_options.log",
+    level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
 
-# initialize Firefox Options
-firefox_options = Options()
+# === Initialize Chrome Options ===
+chrome_options = Options()
+chrome_options.add_argument("--headless")  # run in headless mode (no browser window)
+logging.info("Headless mode enabled for Chrome.")
 
-# Headless
-firefox_options.add_argument("--headless")
-logging.info("Headless...")
-
-logging.info("Staring Browser Session...")
-driver = webdriver.Chrome(options=firefox_options)
-
-logging.info("Browser Launch Successfully.")
+# === Start browser session ===
+logging.info("Starting browser session...")
+driver = webdriver.Chrome(options=chrome_options)
+logging.info("Chrome browser launched successfully.")
 
 driver.maximize_window()
 driver.implicitly_wait(5)
 
-driver.get("https://the-internet.herokuapp.com/javascript_alerts")
-logging.info("URL Open Successfully.")
+# === Open URL ===
+url = "https://the-internet.herokuapp.com/javascript_alerts"
+driver.get(url)
+logging.info(f"URL '{url}' opened successfully.")
 
 try:
+    # === Wait for and click JS Alert button ===
     wait = WebDriverWait(driver, 20)
     js_alert = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "button[onclick='jsAlert()']")))
     js_alert.click()
-    logging.info("Click on JS Normal Alert")
+    logging.info("Clicked on 'JS Alert' button.")
 
-    js_alert_title = driver.switch_to.alert.text
-    logging.info(js_alert_title)
-
-    driver.switch_to.alert.accept() # click on ok
-    logging.info("Alert Accept.")
+    # === Handle alert ===
+    alert = driver.switch_to.alert
+    alert_text = alert.text
+    logging.info(f"Alert text: {alert_text}")
+    alert.accept()
+    logging.info("Alert accepted (OK clicked).")
 
 except Exception as e:
-    logging.info("Element 'JS Alert Button' not found with Explicit wait.")
+    logging.error(f"Error handling JS Alert: {str(e)}")
 
-logging.info("Script Complete.")
-
+# === End of script ===
 driver.quit()
-
-logging.info("End Browser Session...")
+logging.info("Browser session ended. Script complete.")

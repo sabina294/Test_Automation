@@ -1,0 +1,8 @@
+2025-07-30 18:17:39,582 - INFO - Headless mode enabled for Chrome.
+2025-07-30 18:17:39,582 - INFO - Starting browser session...
+2025-07-30 18:17:39,792 - INFO - Chrome browser launched successfully.
+2025-07-30 18:17:42,764 - INFO - URL 'https://the-internet.herokuapp.com/javascript_alerts' opened successfully.
+2025-07-30 18:17:42,804 - INFO - Clicked on 'JS Alert' button.
+2025-07-30 18:17:42,810 - INFO - Alert text: I am a JS Alert
+2025-07-30 18:17:42,814 - INFO - Alert accepted (OK clicked).
+2025-07-30 18:17:42,895 - INFO - Browser session ended. Script complete.

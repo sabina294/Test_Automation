@@ -1,57 +1,61 @@
 from selenium import webdriver
-from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.chrome.options import Options
 import logging
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import os
 
-# setup logging
+# === Ensure logs directory exists ===
+os.makedirs("logs", exist_ok=True)
+
+# === Setup logging ===
 logging.basicConfig(
-    filename="logs/15_browser_options.log",
-    level= logging.INFO,
+    filename="17_page.log",
+    level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
 
-# initialize Firefox Options
-firefox_options = Options()
+# === Initialize Chrome Options ===
+chrome_options = Options()
 
-# Headless
-firefox_options.add_argument("--headed")
-logging.info("Headed...")
+# Remove headless if you want to see the browser
+# chrome_options.add_argument("--headless")
+# logging.info("Headless mode enabled.")
 
-firefox_options.add_argument("--width=700")
-logging.info("Browser Width Set to 700px")
+# Headed mode (default) - logging info only
+logging.info("Headed mode...")
 
-firefox_options.add_argument("--height=600")
-logging.info("Browser Height Set to 600px")
+chrome_options.add_argument("--window-size=700,600")
+logging.info("Browser window size set to 700x600.")
 
-logging.info("Staring Browser Session...")
-driver = webdriver.Firefox(options=firefox_options)
-
-logging.info("Browser Launch Successfully.")
+# === Start Chrome browser ===
+logging.info("Starting browser session...")
+driver = webdriver.Chrome(options=chrome_options)
+logging.info("Chrome browser launched successfully.")
 
 driver.implicitly_wait(5)
 
-driver.get("https://the-internet.herokuapp.com/javascript_alerts")
-logging.info("URL Open Successfully.")
+# === Open target page ===
+url = "https://the-internet.herokuapp.com/javascript_alerts"
+driver.get(url)
+logging.info(f"URL '{url}' opened successfully.")
 
 try:
     wait = WebDriverWait(driver, 20)
     js_alert = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "button[onclick='jsAlert()']")))
     js_alert.click()
-    logging.info("Click on JS Normal Alert")
+    logging.info("Clicked on JS Alert button.")
 
-    js_alert_title = driver.switch_to.alert.text
-    logging.info(js_alert_title)
+    alert_text = driver.switch_to.alert.text
+    logging.info(f"Alert text: {alert_text}")
 
-    driver.switch_to.alert.accept() # click on ok
-    logging.info("Alert Accept.")
+    driver.switch_to.alert.accept()
+    logging.info("Alert accepted.")
 
 except Exception as e:
-    logging.info("Element 'JS Alert Button' not found with Explicit wait.")
+    logging.error(f"Failed to handle JS Alert: {e}")
 
-logging.info("Script Complete.")
-
+# === Cleanup ===
 driver.quit()
-
-logging.info("End Browser Session...")
+logging.info("Browser session ended. Script complete.")

@@ -1,0 +1,10 @@
+2025-07-30 18:21:42,692 - INFO - Running in headed mode.
+2025-07-30 18:21:42,692 - INFO - Browser window size set to 700x600.
+2025-07-30 18:21:42,692 - INFO - Chrome running in incognito mode.
+2025-07-30 18:21:42,692 - INFO - Starting browser session...
+2025-07-30 18:21:43,027 - INFO - Chrome browser launched successfully.
+2025-07-30 18:21:46,117 - INFO - URL 'https://the-internet.herokuapp.com/javascript_alerts' opened successfully.
+2025-07-30 18:21:46,166 - INFO - Clicked on JS Alert button.
+2025-07-30 18:21:46,172 - INFO - Alert text: I am a JS Alert
+2025-07-30 18:21:46,178 - INFO - Alert accepted.
+2025-07-30 18:21:46,250 - INFO - Browser session ended. Script complete.
