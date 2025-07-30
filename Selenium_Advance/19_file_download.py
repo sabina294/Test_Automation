@@ -7,7 +7,7 @@ import logging
 
 # === Setup logging ===
 logging.basicConfig(
-    filename="19_file_download.log",
+    filename="logs/19_file_download.log",
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s'
 )

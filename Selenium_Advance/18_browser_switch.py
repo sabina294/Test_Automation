@@ -11,7 +11,7 @@ os.makedirs("logs", exist_ok=True)
 
 # === Setup logging ===
 logging.basicConfig(
-    filename="18_browser_switch.log",
+    filename="logs/18_browser_switch.log",
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s'
 )

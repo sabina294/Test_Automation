@@ -9,7 +9,7 @@ import os
 
 # setup logging
 logging.basicConfig(
-    filename="15_upload.log",
+    filename="logs/15_upload.log",
     level= logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s'
 )

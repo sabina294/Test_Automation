@@ -11,7 +11,7 @@ os.makedirs("logs", exist_ok=True)
 
 # === Setup logging ===
 logging.basicConfig(
-    filename="17_page.log",
+    filename="logs/17_page.log",
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
