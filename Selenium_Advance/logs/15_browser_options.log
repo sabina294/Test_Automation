@@ -1,9 +1,0 @@
-2025-07-30 18:19:39,284 - INFO - Headed mode...
-2025-07-30 18:19:39,285 - INFO - Browser window size set to 700x600.
-2025-07-30 18:19:39,285 - INFO - Starting browser session...
-2025-07-30 18:19:39,666 - INFO - Chrome browser launched successfully.
-2025-07-30 18:19:42,960 - INFO - URL 'https://the-internet.herokuapp.com/javascript_alerts' opened successfully.
-2025-07-30 18:19:43,006 - INFO - Clicked on JS Alert button.
-2025-07-30 18:19:43,012 - INFO - Alert text: I am a JS Alert
-2025-07-30 18:19:43,019 - INFO - Alert accepted.
-2025-07-30 18:19:43,092 - INFO - Browser session ended. Script complete.
